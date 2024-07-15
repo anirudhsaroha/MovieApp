@@ -21,11 +21,13 @@ const Header = () => {
     }
 
     useEffect(() => {
+       if( searchInput ){
         navigate(`/search?q=${searchInput}`);
+       }
     } , [searchInput] )
 
   return (
-    <header className="fixed top-0 w-full h-16 bg-neutral-600 bg-opacity-75" >
+    <header className="fixed top-0 w-full h-16 bg-black bg-opacity-75 z-40" >
         <div className='container mx-auto px-2 flex items-center h-full' >
             <Link to="/" >
                 <img src={Logo} alt='logo'width={120} ></img>
@@ -33,7 +35,7 @@ const Header = () => {
             <nav className='hidden lg:flex lg:items-center gap-1 ml-5' >
             {
                 navigation.map((nav , index ) => {
-                   return  <NavLink to={nav.href} key={nav.label} className={ ({isActive}) => `px-3 hover:text-neutral-100 ${isActive && "text-neutral-100"}`}  >
+                   return  <NavLink to={nav.href} key={nav.label} className={ ({isActive}) => `px-3 hover:text-white ${isActive && "text-white"}`}  >
                         {nav.label}
                     </NavLink>
                 } )
