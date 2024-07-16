@@ -1,24 +1,51 @@
 import React from 'react'
 import { FaAngleRight, FaAngleLeft } from "react-icons/fa6";
 import { Link } from 'react-router-dom'
+import { useState , useEffect } from 'react';
 
 const BannerHome = ({bannerData , imageUrl }) => {
 
+    const [currentImage,setCurrentImage] = useState(0)
+
+    const handleNext = ()=>{
+        if(currentImage < bannerData.length - 1){
+            setCurrentImage(preve => preve + 1)
+        }
+    }
+    const handlePrevious = ()=>{
+        if(currentImage > 0){
+            setCurrentImage(preve => preve - 1)
+        }
+    }
+
+    useEffect(()=>{
+        const interval = setInterval(()=>{
+            if(currentImage < bannerData.length - 1){
+                handleNext()
+            }else{
+                setCurrentImage(0)
+            }
+        },4000)
+
+        return ()=>clearInterval(interval)
+    },[bannerData,imageUrl ,currentImage])
+
+
   return (
     <section className='w-full h-full' >
-        <div className='flex min-h-full max-h-[95vh]'  >
+        <div className='flex min-h-full max-h-[95vh] overflow-hidden'  >
         {
             bannerData.map( (data , index ) => {
                 return (
-                <div key={index} className='min-w-full min-h-[450px] lg:min-h-full overflow-hidden relative' >
+                <div key={index} className='min-w-full min-h-[450px] lg:min-h-full overflow-hidden overflow-x-scroll ' style={{ transform : `translateX(-${currentImage * 100}%)`}}  >
                     <div  className='w-full h-full' >
-                        <img className='w-full h-full object-cover' src={imageUrl+data.backdrop_path} />
+                        <img alt='front-icon' className='w-full h-full object-cover' src={imageUrl+data.backdrop_path} />
                     </div>
                     <div className='absolute top-0 w-full h-full hidden items-center  justify-between px-4 lg:flex'>
-                                    <button className='p-1 rounded-full z-10 text-white font-bold text-5xl'>
+                                    <button onClick={handlePrevious} className='p-1 rounded-full z-10 text-white font-bold text-5xl hover:scale-125 transition-all'>
                                         <FaAngleLeft/>
                                     </button>
-                                    <button className=' p-1 rounded-full  text-5xl z-10 text-white font-black '>
+                                    <button onClick={handleNext} className=' p-1 rounded-full  text-5xl z-10 text-white font-black hover:scale-125 transition-all '>
                                         <FaAngleRight/>
                                     </button>
                                 </div>
@@ -40,10 +67,7 @@ const BannerHome = ({bannerData , imageUrl }) => {
                                         </Link>
                                     </div>
                                 </div>
-                </div>
-                
-                    
-
+                            </div>
                 )
             })
         }

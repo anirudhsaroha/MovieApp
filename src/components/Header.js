@@ -24,7 +24,7 @@ const Header = () => {
        if( searchInput ){
         navigate(`/search?q=${searchInput}`);
        }
-    } , [searchInput] )
+    } , [searchInput, navigate] )
 
   return (
     <header className="fixed top-0 w-full h-16 bg-black bg-opacity-75 z-40" >
@@ -47,7 +47,7 @@ const Header = () => {
                 <button className='text-2xl text-white' > <IoSearchOutline/> </button>
             </form>
             <div className='w-8 h-8 rounded-full overflow-hidden cursor-pointer active:scale-50 transition-all' >
-                <img src={userIcon} className='w-full h-full' ></img>
+                <img src={userIcon} alt='user-icon' className='w-full h-full' ></img>
             </div>
         </div>
         </div>

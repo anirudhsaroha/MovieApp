@@ -45,9 +45,11 @@ function App() {
       <div className='' >
         <Outlet/>
 
+        <div>
         <Routes>
           <Route path="" element={<Home bannerData={bannerData} imageUrl={imageUrl} />} />
         </Routes>
+        </div>
 
       </div>
       <Footer/>
