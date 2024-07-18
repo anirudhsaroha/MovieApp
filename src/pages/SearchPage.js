@@ -77,7 +77,7 @@ const SearchPage = () => {
               {
                 data.map((searchData,index)=>{
                   return(
-                    <Card data={searchData} imageUrl={imageUrl} key={searchData.id+"search"} media_type={searchData.media_type}/>
+                    <Card data={searchData} imageUrl={imageUrl} key={searchData.id+"search"+ index} media_type={searchData.media_type}/>
                   )
                 })
               }

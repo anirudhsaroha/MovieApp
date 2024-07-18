@@ -48,7 +48,7 @@ const Header = () => {
         </nav>
         <div className='ml-auto flex items-center gap-4' >
             <form className='flex items-center gap-2' onSubmit={handleSubmit} >
-                <input type='text' placeholder='Search...' className='bg-transparent px-4 py-1 outline-none border-none hidden lg:block' value={searchInput} onChange={(e) => setSearchInput(e.target.value)} />
+                <input type='text' placeholder='Search...' className='bg-transparent px-4 py-1 outline-none border-none lg:block' value={searchInput} onChange={(e) => setSearchInput(e.target.value)} />
                 <button className='text-2xl text-white' > <IoSearchOutline/> </button>
             </form>
             <div className='w-8 h-8 rounded-full overflow-hidden cursor-pointer active:scale-50 transition-all' >
