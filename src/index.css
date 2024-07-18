@@ -8,7 +8,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  @apply bg-black text-neutral-300;
+  @apply bg-black text-neutral-300 p-0 m-0 ;
 }
 
 code {
@@ -17,7 +17,8 @@ code {
 }
 
 * {
-  scrollbar-width: none; /* Firefox */
+  scrollbar-width: none; 
+  box-sizing: border-box;
 }
 
 *::-webkit-scrollbar {

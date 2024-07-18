@@ -10,9 +10,7 @@ axios.defaults.headers.common['Authorization'] = `Bearer ${process.env.REACT_APP
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  // <React.StrictMode>
     <RouterProvider router={router}>
       <App />
     </RouterProvider>
-  // </React.StrictMode>
 );
