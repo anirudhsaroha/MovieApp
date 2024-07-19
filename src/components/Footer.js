@@ -8,6 +8,7 @@ const Footer = () => {
           <Link to="/" >About</Link>
           <Link to="/">Contact</Link>
         </div>
+    <p className='text-sm'>Created By Anirudh Saroha</p>
     </footer>
   )
 }
